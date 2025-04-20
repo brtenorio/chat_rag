@@ -50,7 +50,8 @@ if __name__=="__main__":
 			try:
 				pdf_reader = PdfReader(pdf_file)
 				st.success("PDF file uploaded successfully!")
-				os.makedirs("./temp")
+				if not os.path.exists("./temp"):
+					os.makedirs("./temp")
 				temp_file = "./temp/temp.pdf"
 				with open(temp_file, "wb") as file:
 					file.write(pdf_file.getvalue())
