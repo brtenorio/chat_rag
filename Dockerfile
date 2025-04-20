@@ -10,15 +10,15 @@ RUN apt-get update && apt-get install -y pkg-config gcc libhdf5-dev
 # Isntall git large file system
 RUN apt-get install git-lfs -y
 
-RUN git clone https://github.com/brtenorio/Dog_Breed_Classifier.git
+RUN git clone https://github.com/brtenorio/chat_rag.git
 
 # Set the cloned repo the working directory inside the container
-WORKDIR CHAT_RAG
+WORKDIR chat_rag
 
 # Install the app dependencies 
 RUN python3 -m pip install poetry
 RUN poetry install
-
+RUN git pull
 # Fetch large files
 # RUN git lfs fetch --all && git pull && git lfs pull
 
