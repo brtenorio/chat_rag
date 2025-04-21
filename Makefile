@@ -1,7 +1,7 @@
-# Makefile for the Dog_Breed_Classifier project
+# Makefile for the RAG_CHAT project
 
 # Variables
-PROJECT_NAME = Dog_Breed_Classifier
+PROJECT_NAME = rag_chat
 PYTHON = python3
 PIP = pip
 POETRY = poetry
@@ -21,7 +21,7 @@ install:
 
 run-app:
 	@echo "Running the application..."
-	$(POETRY) run streamlit run application/app.py --server.port 8080
+	$(POETRY) run streamlit run src/app.py --server.port 8080
 
 run-api:
 	@echo "Running the API..."
@@ -30,10 +30,6 @@ run-api:
 test:
 	@echo "Running tests..."
 	$(POETRY) run pytest -v tests/test.py
-
-retrain-model:
-	@echo "Retrain and regenerate model file"
-	$(POETRY) run $(PYTHON) dog_breed_classifier/main.py
 
 docker-build:
 	@echo "Building Docker image..."

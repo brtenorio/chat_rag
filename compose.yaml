@@ -1,6 +1,9 @@
 services:
   app:
     build: .
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     ports:
       - "8080:8080"
     volumes:
@@ -8,11 +11,17 @@ services:
     command: ["poetry", "run", "streamlit", "run", "src/app.py", "--server.port", "8080"]
   test:
     build: .
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     volumes:
       - .:/app
     command: ["pytest", "tests/test.py"]
   api:
     build: .
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     ports:
       - "8080:8080"
     volumes:
