@@ -13,11 +13,11 @@ ik = 0
 while ik < 5:
     query = input("User query: ")
 
-    if query.lower() in ["quit","exit","bye"]:
+    if query.lower() in ["quit", "exit", "bye"]:
         print("Good bye!")
         break
     else:
-        result = qa.invoke({"question": query},{"chat_history":history})
-        history.append((query,result["answer"]))
+        result = qa.invoke({"question": query}, {"chat_history": history})
+        history.append((query, result["answer"]))
         print(result["answer"])
-        ik+=1
+        ik += 1

@@ -10,7 +10,7 @@ child_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20
 vector_store = Chroma(
     collection_name="document",
     embedding_function=embeddings,
-    #persist_directory="../chroma_db"
+    # persist_directory="../chroma_db"
 )
 
 store = InMemoryStore()
@@ -18,6 +18,6 @@ store = InMemoryStore()
 retriever = ParentDocumentRetriever(
     vectorstore=vector_store,
     docstore=store,
-    child_splitter= child_splitter,
-    parent_splitter=parent_splitter
+    child_splitter=child_splitter,
+    parent_splitter=parent_splitter,
 )
