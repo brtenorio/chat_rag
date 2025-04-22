@@ -14,5 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install dependencies
+      run: pip install poetry
+      
     - name: Install dependencies and run test
       run: make all
