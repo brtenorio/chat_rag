@@ -16,16 +16,16 @@ def test_prompt_template_renders_correctly():
     assert "helo world" in result
     assert "email" in result
 
-@patch("app.LLMChain")
-def test_llm_chain_invocation(mock_llm_chain_class, mock_chain_response):
-    mock_chain_instance = MagicMock()
-    mock_chain_instance.invoke.return_value = mock_chain_response
-    mock_llm_chain_class.return_value = mock_chain_instance
+@pytest.fixture
+def embedding_model():
+    from chat_rag.embedding import embeddings
+    model = embeddings
+    return model
 
-    from app import prompt, chat_model
-    from langchain.chains import LLMChain
+def test_embedding_dimension(embedding_model):
+    """Test that the output embedding has the correct dimensionality."""
+    input_text = "Check the dimensionality of this embedding."
+    embedding = embedding_model.embed_query(input_text)
 
-    llm_chain = LLMChain(prompt=prompt, llm=chat_model)
-    response = llm_chain.invoke({"use_case": "email", "message": "hi"})
-
-    assert "revised message" in response["text"].lower() 
+    expected_dimension = 768
+    assert len(embedding) == expected_dimension, f"Embedding should have {expected_dimension} dimensions."
