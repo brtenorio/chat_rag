@@ -16,7 +16,7 @@ RUN git clone https://github.com/brtenorio/chat_rag.git
 WORKDIR chat_rag
 
 # Install the app dependencies 
-RUN python3 -m pip install poetry
+RUN pip install poetry
 RUN poetry install
 RUN git pull
 # Fetch large files
