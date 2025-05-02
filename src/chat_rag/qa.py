@@ -21,5 +21,6 @@ class QA:
             retriever=retriever,
             return_source_documents=False,
             memory=memory,
+            condense_question_llm = llm,
             get_chat_history=lambda h: h,
         )

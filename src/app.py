@@ -26,11 +26,11 @@ if __name__ == "__main__":
         with st.sidebar:
             option = st.selectbox(
                 "What model would you like to use?",
-                ("Haiku", "Sonet", "Any"),
+                ("Sonnet", "Haiku", "Any"),
             )
             max_num_tokens = st.selectbox(
                 "What max num of tokens should your model use?",
-                ("256", "512", "1024"),
+                ("1024", "256", "512"),
             )
             st.write(
                 f"You selected model option: {option}, max_num_tokens: {max_num_tokens}"

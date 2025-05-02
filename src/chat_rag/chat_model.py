@@ -11,7 +11,7 @@ class LLMmodel:
     def load(self):
         if self.model == "Haiku":
             model_name = "claude-3-5-haiku-20241022"
-        elif self.model == "Sonet":
+        elif self.model == "Sonnet":
             model_name = "claude-3-7-sonnet-20250219"
         llm = init_chat_model(
             model_name,
